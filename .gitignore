@@ -1,0 +1,14 @@
+# 数据与产物：绝不入库（含聊天记录、密钥、备份）
+data/*
+!data/PUT_DB_HERE.txt
+data-src/
+phone-backups/
+output/
+config.json
+*.db
+*.db-wal
+*.db-shm
+auth_info_key_prefs.xml
+__pycache__/
+*.pyc
+.venv/

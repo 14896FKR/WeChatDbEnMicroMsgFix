@@ -1,0 +1,23 @@
+{
+  "_说明": "复制本文件为 config.json 后按需修改。优先级：命令行 > 环境变量 > 配置文件 > 内置默认。空串或删掉该键 = 用内置默认。",
+  "_搜索规则": "数据源：按 SourceName 里的文件名，在 SourceDir 各目录（相对路径按本目录解析）里找；同名多份取修改时间最新的，逐个校验（能解密 + integrity_check=ok）。",
+  "_手机库": "手机上的 EnMicroMsg.db 只认文件名；多账号目录时取修改时间最新的那个，也可用 WxDb 指定完整路径。",
+  "_版本守卫": "ExpectVersion 留空 = 不检查目标手机版本；填了就要求匹配，8.0.48 与 8048 两种写法等价。",
+  "_安全": "本文件不要放密钥入库；.json 严禁加 BOM。",
+  "SourceDir": ["data", "data-src", "."],
+  "SourceName": ["EnMicroMsg.db", "decrypted_EnMicroMsg.db"],
+  "SourceRecurse": false,
+  "ExpectVersion": "",
+  "WaitSeconds": 25,
+  "AdbExe": "",
+  "PythonExe": "python",
+  "SqliteExe": "",
+  "Decryptor": "",
+  "Encryptor": "",
+  "Processor": "",
+  "BackupRoot": "",
+  "DbFile": "",
+  "WxDb": "",
+  "Key": "",
+  "Imei": "1234567890ABCDEF"
+}

@@ -1,0 +1,7 @@
+# 行尾统一：仓库内一律 LF（避免每次 add 都冒 LF→CRLF 告警），Windows 检出 .ps1 时用 CRLF
+* text=auto
+*.ps1  text eol=crlf
+*.py   text eol=lf
+*.md   text eol=lf
+*.json text eol=lf
+*.txt  text eol=lf

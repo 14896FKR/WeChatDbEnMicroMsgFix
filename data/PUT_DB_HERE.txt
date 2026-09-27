@@ -1,0 +1,4 @@
+﻿把高版本微信库（EnMicroMsg.db，明文或加密都行）放进本目录。
+脚本按文件名找：EnMicroMsg.db / decrypted_EnMicroMsg.db；同名多份取最新并逐个校验。
+要换目录或文件名：改 config.json 的 SourceDir / SourceName，或用 -SourceDir / -SourceName / -SourceDb。
+本目录内容不入库（见 .gitignore）。

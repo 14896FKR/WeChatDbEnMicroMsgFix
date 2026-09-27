@@ -1,0 +1,27 @@
+本目录下的工具来源说明（许可归各自作者）：
+
+- sqlite3.exe        SQLite 官方命令行工具（public domain，无授权顾虑）
+                     随包版本：3.53.4（2026-07-24，64-bit）
+                     官方下载页：https://www.sqlite.org/download.html
+                     选 Precompiled Binaries for Windows 下的 sqlite-tools-win-x64-*.zip，
+                     解压后把 sqlite3.exe 覆盖到本目录即可（要求 >= 3.8：脚本用到 WAL 与 wal_checkpoint）。
+- wechat_decrypt.py  上游开源项目 android-wechat-decrypt 的微信库解密脚本（韩文 README）
+- wechat_encrypt.py  本项目自写：与上面的解密脚本互为逆运算的逐页加密器
+- walmerge.py        本项目自写：按 sqlite wal.c 的恢复规则实现的 WAL 合并器
+
+为什么带 sqlite3、不带 adb：
+- sqlite3：Windows 不自带（或自带的很旧），4 MB、public domain，随包最省事。
+- adb：不随包。① 它不是单文件——还需要同目录的 AdbWinApi.dll、AdbWinUsbApi.dll
+  （完整 platform-tools 约 14.7 MB / 15 个文件）；② 它属于 Google Android SDK，受 SDK 条款约束，
+  放进公开仓库有授权不确定性；③ 使用者通常本来就装好了，且版本最好与其 platform-tools 一致。
+  需要时：从 https://developer.android.com/tools/releases/platform-tools 下载。
+  指定方式：-AdbExe <路径> / 环境变量 WECHATDBFIX_ADB / config.json。
+  想放进本目录也行：请把 adb.exe 与那两个 DLL 一起放到 tools 目录（脚本会优先用 tools 下的 adb.exe）。
+
+注意事项：
+- 三个 .py 都要用同一个 Python 解释器（需要 cryptography 库）；
+- walmerge.py 会被 push.ps1 在运行时复制到临时目录使用，改完记得同步；
+- 不要用任何读写型第三方工具（如 SQLCipher 命令行）直接打开数据源原件。
+
+授权说明：wechat_decrypt.py 来自上游开源项目，上游未标注许可证；本项目仅作随包转发并在此注明来源，
+若原作者有异议请联系删除。本项目自写部分（wechat_encrypt.py / walmerge.py / 各 .ps1）按仓库根目录 LICENSE（MIT）授权。
